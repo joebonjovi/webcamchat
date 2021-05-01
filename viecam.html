@@ -1,0 +1,41 @@
+<html>
+<body>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+        
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyC94_OavU_hbPoMbrtNFVyHxr3rngXJRoM",
+        authDomain: "ytcamtutorial.firebaseapp.com",
+        projectId: "ytcamtutorial",
+        storageBucket: "ytcamtutorial.appspot.com",
+        messagingSenderId: "97825001111",
+        appId: "1:97825001111:web:b6e983f096a8af162e63d2",
+        measurementId: "G-LW91LSC5JH"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      main();
+
+      function main(){
+        firebase.database().ref('camdata').once('value').then((snapshot) => {
+  var data = (snapshot.val()) || 'Anonymous';
+  photo.setAttribute('src', data);
+});
+setTimeout(function() {
+  main();
+}, 10);
+      }
+
+    </script>
+    <img id="photo" src="">
+</body>
+</html>
